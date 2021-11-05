@@ -92,6 +92,30 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
+//    Выставляем уровень громкости > max
+    @Test
+    public void shouldSetCurrentSoundVolumeMax (){
+        Radio volume = new Radio();
+        volume.setCurrentSoundVolume(12);
+
+        int expected = 0;
+        int actual = volume.getCurrentSoundVolume();
+
+        assertEquals(expected, actual);
+    }
+
+    //    Выставляем уровень громкости < min
+    @Test
+    public void shouldSetCurrentSoundVolumeMin (){
+        Radio volume = new Radio();
+        volume.setCurrentSoundVolume(-5);
+
+        int expected = 0;
+        int actual = volume.getCurrentSoundVolume();
+
+        assertEquals(expected, actual);
+    }
+
     //Увеличение громкости в пределах max min
     @Test
     public void shouldIncreaseVolume() {
