@@ -1,13 +1,46 @@
 package ru.netology.radio;
 
 public class Radio {
-    private int currentRadioStationNumber;
-    private int currentSoundVolume;
-    int minNumber = 0;
-    int maxNumber = 9;
-    int minVolume = 0;
-    int maxVolume = 10;
+    private int currentRadioStationNumber = 3; //текущая станция
+    private int currentSoundVolume = 10;
+    private int numberOfRadioStations = 10; //количество радио станций
+    private int minNumber = 0;
+    private int maxNumber = numberOfRadioStations + minNumber - 1;
+    private int minVolume = 0;
+    private int maxVolume = 100;
 
+
+    public Radio() {
+    }
+
+    public Radio(int currentRadioStationNumber, int numberOfRadioStations) {
+        this.currentRadioStationNumber = currentRadioStationNumber;
+        if (numberOfRadioStations > 0) {
+            this.numberOfRadioStations = numberOfRadioStations;
+            this.maxNumber = numberOfRadioStations + minNumber - 1;
+        }
+    }
+
+    public Radio(int numberOfRadioStations) {
+        if (numberOfRadioStations > 0) {
+            this.numberOfRadioStations = numberOfRadioStations;
+            this.maxNumber = numberOfRadioStations + minNumber - 1;
+        }
+    }
+
+    public Radio(int currentSoundVolume, int minVolume, int maxVolume) {
+        this.currentSoundVolume = currentSoundVolume;
+        this.minVolume = minVolume;
+        this.maxVolume = maxVolume;
+    }
+
+    public int getNumberOfRadioStations() {
+        return numberOfRadioStations;
+    }
+
+    public int getMaxNumber() {
+        return maxNumber;
+    }
 
     //Выставляем номер радиостанции
     public void setCurrentRadioStationNumber(int newRadioStationNumber) {
@@ -46,19 +79,6 @@ public class Radio {
         return currentRadioStationNumber;
     }
 
-    //Выставляем уровень громкости
-    public void setCurrentSoundVolume(int newVolume) {
-        if (newVolume < minVolume) {
-            return;
-        }
-        if (newVolume > maxVolume) {
-            return;
-        }
-         else {
-            currentSoundVolume = newVolume;
-        }
-    }
-
     //Увеличение громкости на 1
     public void increaseVolume() {
         if (currentSoundVolume < maxVolume) {
@@ -80,7 +100,7 @@ public class Radio {
         }
     }
 
-    public int getCurrentSoundVolume(){
+    public int getCurrentSoundVolume() {
         return currentSoundVolume;
     }
 
